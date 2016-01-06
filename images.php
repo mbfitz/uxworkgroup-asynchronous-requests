@@ -13,5 +13,5 @@
 	$Ajax = new Ajax();
 	$response = $Ajax->getImages($paginate);
 
-	header('Content-Type: application/json');
+	header('Content-Type: application/json; charset=UTF-8');
 	print $response;

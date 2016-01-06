@@ -1,5 +1,3 @@
-
-
 $(function () {
 
 	var $button        = $('button.get-more');
