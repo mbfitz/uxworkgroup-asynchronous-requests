@@ -19,6 +19,13 @@ $(function () {
 	 */
 
 	var getImages = function () {
+		var data = {
+			paginate: paginateNumber,
+		};
+
+		$.post("/images.php", data, function(response) {
+	      addToPage(response);
+	    });
 
 	};
 
@@ -33,8 +40,14 @@ $(function () {
 	 *
 	 */
 
-	var addToPage = function () {
-
+	var addToPage = function (images) {
+		if (images.length <=0 ) {
+			$('.images').append('<h1> No More Images Broski </h1>');
+		} else {
+			for (var i = 0; i < images.length; i++) {
+				$('.images').append('<img src="'+ images[i].url + '">');
+			}
+		}
 	};
 
 	/**
@@ -46,6 +59,7 @@ $(function () {
 
 	$button.on('click', function () {
 		getImages(paginateNumber);
+		paginateNumber += 1;
 	});
 
 });
